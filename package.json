@@ -4,7 +4,7 @@
     "build:dev": "webpack --progress --profile --colors",
     "build": "set NODE_ENV=production && set BUILD_DEV=0 && webpack -p --config webpack.production.config.js --progress --profile --colors --optimize-minimize --optimize-dedupe",
     "build:sandbox": "set NODE_ENV=production && set BUILD_DEV=0 && set BUILD_PRERELEASE=1 && webpack -p --config webpack.production.config.js --progress --profile --colors --optimize-minimize --optimize-dedupe",
-    "watch:dev": "webpack-dev-server --hot --inline --progress --colors",
+    "watch:dev": "webpack-dev-server -p --define process.env.NODE_ENV='\"dev\"' --hot --inline --progress --colors",
     "watch": "set NODE_ENV=production && set BUILD_DEV=0 && set BUILD_PRERELEASE=1 && webpack-dev-server --hot --inline --progress --colors",
     "test": "echo \"No unit tests and e2e tests yet\" && exit 1"
   },
@@ -26,11 +26,14 @@
     "react-rating": "^0.2.2",
     "react-redux": "^4.4.2",
     "react-router": "^1.0.0",
+    "react-router-redux": "^4.0.5",
     "react-timeago": "^3.0.0",
     "react-tinymce": "^0.5.1",
     "react-widgets": "^3.2.4",
     "react-youtube": "^6.1.0",
     "redux": "^3.4.0",
+    "redux-logger": "^2.6.1",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1",
     "underscore": "^1.8.3"
   },

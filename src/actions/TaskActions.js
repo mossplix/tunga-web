@@ -103,6 +103,7 @@ export function retrieveTask(id) {
             .then(function(response) {
                 dispatch(retrieveTaskSuccess(response.data))
             }).catch(function(response) {
+                  console.log(response);
                 dispatch(retrieveTaskFailed(response.data))
             });
     }
@@ -273,6 +274,7 @@ export function retrieveTaskMeta(id) {
             .then(function(response) {
                 dispatch(retrieveTaskMetaSuccess(response.data))
             }).catch(function(response) {
+                console.log(response);
                 dispatch(retrieveTaskMetaFailed(response.data))
             });
     }
