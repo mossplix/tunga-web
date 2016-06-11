@@ -45,59 +45,64 @@ import ProfilePicture from 'components/ProfilePicture'
 import PasswordChangeForm from 'components/PasswordChangeForm'
 import ProfileType from 'components/ProfileType'
 import PaymentList from 'components/PaymentList'
+import {IntlProvider} from 'react-intl';
+
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>
-            <Route path="/" component={App}>
-                <IndexRoute component={LandingPage}/>
-                <Route path="signin" component={SignInPage} />
-                <Route path="signup" component={SignUpPage} />
-                <Route path="reset-password" component={PasswordResetPage} />
-                <Route path="reset-password/confirm/:uid/:token" component={PasswordResetConfirmPage} />
-                <Route path="home" component={Home} />
-                <Route path="profile" component={ProfilePage}>
-                    <IndexRedirect to="personal"/>
-                    <Route path="personal" component={Profile} />
-                    <Route path="stack" component={Stack} />
-                    <Route path="account" component={Account} />
-                    <Route path="photo" component={ProfilePicture} />
-                    <Route path="security" component={PasswordChangeForm} />
-                    <Route path="security" component={PasswordChangeForm} />
-                    <Route path="complete" component={ProfileType} />
-                </Route>
-                <Route path="settings" component={SettingsPage} />
-                <Route path="task" component={TaskPage}>
-                    <IndexRoute component={TaskList}/>
-                    <Route path="new" component={TaskForm} />
-                    <Route path="tag/:tag" component={TaskList} />
-                    <Route path="filter/:filter" component={TaskList} />
-                    <Route path=":id" component={Task}>
-                        <IndexRoute component={Task} />
-                        <Route path="" component={TaskWorflow}>
-                            <Route path=":section" />
+        <Provider store={store}>
+          <IntlProvider locale="en">
+            <Router history={history}>
+                <Route path="/" component={App}>
+                    <IndexRoute component={LandingPage}/>
+                    <Route path="signin" component={SignInPage} />
+                    <Route path="signup" component={SignUpPage} />
+                    <Route path="reset-password" component={PasswordResetPage} />
+                    <Route path="reset-password/confirm/:uid/:token" component={PasswordResetConfirmPage} />
+                    <Route path="home" component={Home} />
+                    <Route path="profile" component={ProfilePage}>
+                        <IndexRedirect to="personal"/>
+                        <Route path="personal" component={Profile} />
+                        <Route path="stack" component={Stack} />
+                        <Route path="account" component={Account} />
+                        <Route path="photo" component={ProfilePicture} />
+                        <Route path="security" component={PasswordChangeForm} />
+                        <Route path="security" component={PasswordChangeForm} />
+                        <Route path="complete" component={ProfileType} />
+                    </Route>
+                    <Route path="settings" component={SettingsPage} />
+                    <Route path="task" component={TaskPage}>
+                        <IndexRoute component={TaskList}/>
+                        <Route path="new" component={TaskForm} />
+                        <Route path="tag/:tag" component={TaskList} />
+                        <Route path="filter/:filter" component={TaskList} />
+                        <Route path=":id" component={Task}>
+                            <IndexRoute component={Task} />
+                            <Route path="" component={TaskWorflow}>
+                                <Route path=":section" />
+                            </Route>
                         </Route>
                     </Route>
+                    <Route path="member" component={UserPage}>
+                        <IndexRedirect to="filter/developers"/>
+                        <Route path="filter/:filter" component={UserList} />
+                        <Route path=":id" component={User} />
+                    </Route>
+                    <Route path="message" component={MessagePage}>
+                        <IndexRedirect to="inbox"/>
+                        <Route path="inbox" component={Inbox} />
+                        <Route path="compose" component={Compose} />
+                        <Route path="sent" component={Sent} />
+                        <Route path=":id" component={MessageDetail} />
+                    </Route>
+                    <Route path="payments" component={TaskPage}>
+                        <IndexRedirect to="pending"/>
+                        <Route path=":filter" component={PaymentList} />
+                    </Route>
+                    <Route path=":unknown" component={Home} />
                 </Route>
-                <Route path="member" component={UserPage}>
-                    <IndexRedirect to="filter/developers"/>
-                    <Route path="filter/:filter" component={UserList} />
-                    <Route path=":id" component={User} />
-                </Route>
-                <Route path="message" component={MessagePage}>
-                    <IndexRedirect to="inbox"/>
-                    <Route path="inbox" component={Inbox} />
-                    <Route path="compose" component={Compose} />
-                    <Route path="sent" component={Sent} />
-                    <Route path=":id" component={MessageDetail} />
-                </Route>
-                <Route path="payments" component={TaskPage}>
-                    <IndexRedirect to="pending"/>
-                    <Route path=":filter" component={PaymentList} />
-                </Route>
-                <Route path=":unknown" component={Home} />
-            </Route>
-        </Router>
-    </Provider>,
+            </Router>
+          </IntlProvider>
+        </Provider>
+    ,
     document.getElementById('content')
 );

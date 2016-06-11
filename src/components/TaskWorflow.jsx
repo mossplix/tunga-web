@@ -11,6 +11,7 @@ import Avatar from './Avatar'
 import ApplicationList from './ApplicationList'
 import TaskForm from './TaskForm'
 import LargeModal from './ModalLarge'
+import MilestoneSection from './milestones/milestoneSection'
 
 export default class TaskWorflow extends React.Component {
 
@@ -106,6 +107,7 @@ export default class TaskWorflow extends React.Component {
         this.setState({showModal: true});
     }
 
+
     renderModalContent() {
         const { TaskActions, Task, Auth } = this.props;
         const { task } = Task.detail;
@@ -126,7 +128,9 @@ export default class TaskWorflow extends React.Component {
 
     render() {
         const { Auth, Task, TaskActions } = this.props;
+
         const { task } = Task.detail;
+        console.log(task);
 
         return (
             <div>
@@ -136,6 +140,8 @@ export default class TaskWorflow extends React.Component {
                 <div>
                     <h2>Task Workflow</h2>
                     {this.renderModalContent()}
+
+                     <MilestoneSection task={task} auth={Auth} taskActions={TaskActions}/>
                     {task.apply && !task.closed && (Auth.user.id == task.user || Auth.user.is_staff)?(
                     <div className="workflow-actions">
                         <div className="alert alert-info" style={{display: 'block'}}>This task is still open to applications
