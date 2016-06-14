@@ -9,6 +9,7 @@ function task(state = {}, action) {
     switch (action.type) {
         case TaskActions.CREATE_TASK_SUCCESS:
         case TaskActions.RETRIEVE_TASK_SUCCESS:
+            console.log(action);
             return action.task;
         case TaskActions.UPDATE_TASK_SUCCESS:
             return {...state, ...action.task};

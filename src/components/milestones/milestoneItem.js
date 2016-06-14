@@ -20,15 +20,13 @@ var ToolTip = Radium(React.createClass({
     render: function() {
           const  created = new Date(this.props.milestone.created);
           const due_date = new Date(this.props.milestone.due_date);
-         const tooltip = (
-  <Tooltip> <strong style={{borderBottom: "1px solid #f41152",margin:"0px !important",padding:"0px !important"}}>{this.props.milestone.title||"ddddd"}</strong><div >
+          let description;
 
+          if (this.props.milestone.type === 4){
 
-
-{this.props.milestone.description||""}
-
-     <FormattedDate
-                    value={due_date}
+              description =  (
+                  <FormattedDate
+                    value={created}
                     month='long'
                     day='numeric'
                     year='numeric'
@@ -36,9 +34,17 @@ var ToolTip = Radium(React.createClass({
                     hour='numeric'
                     minute='2-digit'
                 />
+              );
 
+          }
+        else{
+              description = (<span>{this.props.milestone.description}</span>);
 
-<FormattedRelative value={due_date} units={'minute'} /> </div></Tooltip>
+          }
+         const tooltip = (
+  <Tooltip ref={this.props.milestone.id}> <strong style={{borderBottom: "1px solid #f41152",margin:"0px !important",padding:"0px !important"}}>{this.props.milestone.title}</strong><div >
+{description}
+ </div></Tooltip>
 );
       return (
                <OverlayTrigger    placement="top" overlay={tooltip}>
@@ -132,6 +138,11 @@ var MilestoneItem = React.createClass({
                     <ToolTip milestone={milestone}/>
                   </Col>
                  </Row>
+                 <Row>
+    <Col xs={6} md={8} xsOffset={10} mdOffset={10} style={{paddingLeft:"2px !important",    marginTop: "-2px",paddingRight:"2px !important"}}>
+    <FormattedRelative value={new Date(milestone.due_date)} />
+    </Col>
+     </Row>
 
           </Col>);
 

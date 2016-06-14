@@ -12,6 +12,7 @@ import ApplicationList from './ApplicationList'
 import TaskForm from './TaskForm'
 import LargeModal from './ModalLarge'
 import MilestoneSection from './milestones/milestoneSection'
+import UpdateForm from './milestones/updateForm'
 
 export default class TaskWorflow extends React.Component {
 
@@ -138,7 +139,8 @@ export default class TaskWorflow extends React.Component {
                     (<Progress/>)
                     :(
                 <div>
-                    <h2>Task Workflow</h2>
+                    <h2>Task Workflow  </h2>
+
                     {this.renderModalContent()}
 
                      <MilestoneSection task={task} auth={Auth} taskActions={TaskActions}/>
@@ -181,6 +183,7 @@ export default class TaskWorflow extends React.Component {
                             <button type="button" className="btn btn-primary" onClick={this.handleViewApplications.bind(this)}>View Applications <span className="badge">{task.open_applications}</span></button>
                                 ):null}
                             <button type="button" className="btn btn-primary" onClick={this.handleCloseTask.bind(this)}>Close task</button>
+                            <UpdateForm/>
                         </div>
                             )}
                     </div>

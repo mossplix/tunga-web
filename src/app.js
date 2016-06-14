@@ -45,7 +45,9 @@ import ProfilePicture from 'components/ProfilePicture'
 import PasswordChangeForm from 'components/PasswordChangeForm'
 import ProfileType from 'components/ProfileType'
 import PaymentList from 'components/PaymentList'
-import {IntlProvider} from 'react-intl';
+import {IntlProvider} from 'react-intl'
+import UpdateRequestForm from 'components/milestones/updateRequestForm'
+import UpdateForm from 'components/milestones/updateForm'
 
 
 ReactDOM.render(
@@ -77,6 +79,8 @@ ReactDOM.render(
                         <Route path="filter/:filter" component={TaskList} />
                         <Route path=":id" component={Task}>
                             <IndexRoute component={Task} />
+                             <Route path="update" component={UpdateRequestForm} />
+                             <Route path="update/:ms_id" component={UpdateForm}/>
                             <Route path="" component={TaskWorflow}>
                                 <Route path=":section" />
                             </Route>
