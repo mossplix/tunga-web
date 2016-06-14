@@ -17,6 +17,7 @@ npm install
 * index.html is a template, refrain from editing (except when adding global libraries served via a CDN)
 * Leverage [ES6/ES2015](https://babeljs.io/docs/learn-es2015/) features in your code
 * Use [axios](https://github.com/mzabriskie/axios) for networking
+* Use __DEV__ and __PRERELEASE__ predefined globals to filter code the should only be added in development and testing
 
 #### Importing modules
 Use either ES6 imports
@@ -58,6 +59,12 @@ npm run watch:dev
 
 2. A new browser tab with automatically open at http://127.0.0.1:8080/
 (The browser will auto reload when changes are made to the code)
+
+# Debugging
+
+[React Developer Tools](https://github.com/facebook/react-devtools)
+
+[Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 # Documentation
 Find API Documentation at https://tunga.io/api/docs/

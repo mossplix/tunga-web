@@ -98,6 +98,15 @@ form .alert {
 
 form {
     max-width: 500px;
+
+    .nav {
+        .btn {
+            color: #fff;
+            background: @brand none !important;
+            border-color: @brand;
+            outline-color: @brand;
+        }
+    }
 }
 
 .modal form {
@@ -108,12 +117,40 @@ form {
     margin: 2px;
 }
 
+.btn.btn-action {
+    color: @brand;
+    background: #fff none;
+    border-color: @brand;
+    outline-color: @brand;
+}
+
+.btn.btn-action:hover,
+.btn.btn-action:active {
+    color: #fff;
+    background-color: @brand;
+}
+
 form[name="comment"], form[name="reply"] {
     max-width: none;
 }
 
+form[name="task"] {
+    max-width: 500px;
+
+    .btn.btn-action {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
 .form-control, .input-group-addon, .btn {
     border-radius: 0;
+}
+
+.input-group {
+    .btn {
+        margin: 0;
+    }
 }
 
 .input-group-addon {
@@ -430,7 +467,9 @@ form[name='compose'] {
     }
 }
 
-.card.task {
+.card.task, .card.user {
+    box-shadow: 3px 3px 2px #ddd;
+
     .title {
         height: 44px;
         overflow-y: hidden;
@@ -441,6 +480,14 @@ form[name='compose'] {
         overflow-y: hidden;
     }
 
+    .actions {
+        .btn {
+            box-shadow: 3px 3px 2px #aaa;
+        }
+    }
+}
+
+.card.task {
     .status {
         .open {
             color: @green;
@@ -623,6 +670,23 @@ form[name='compose'] {
         color: #fff;
         background-color: @tunga-blue;
         text-shadow: none;
+    }
+}
+
+.btn-group.btn-choices.select {
+    .btn {
+        margin: 0;
+        color: @brand;
+        background: #fff none;
+        border-color: #ccc;
+        outline-color: @brand;
+        padding: 6px 9px;
+    }
+
+    .btn.active {
+        color: @brand;
+        text-shadow: none;
+        border-color: @brand;
     }
 }
 
@@ -1368,5 +1432,9 @@ form[name='compose'] {
         }
     }
     /*LARGE SCREENS*/
+}
+
+.mce-panel, .mce-btn, .mce-btn:hover {
+    background-color: #fff !important;
 }
 
